@@ -17,3 +17,4 @@
 ajaxify_your_site/tmp/
 *.log
 *.sqlite3
+.rake_tasks~

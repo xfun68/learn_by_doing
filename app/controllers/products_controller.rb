@@ -47,9 +47,11 @@ class ProductsController < ApplicationController
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render json: @product, status: :created, location: @product }
+        format.js
       else
         format.html { render action: "new" }
         format.json { render json: @product.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end

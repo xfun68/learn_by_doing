@@ -16,3 +16,4 @@
 .idea/
 ajaxify_your_site/tmp/
 *.log
+*.sqlite3

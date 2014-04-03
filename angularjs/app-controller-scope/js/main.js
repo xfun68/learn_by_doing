@@ -4,6 +4,17 @@ app.run(function($rootScope){
   $rootScope.name = "Hello World";
 })
 
+app.config(['$routeProvider', function($routeProvider){
+  $routeProvider
+  .when('/home', {
+    controller: 'HomeController',
+    template: '<h2>We are home</h2>'
+  })
+  .otherwise({
+    redirectTo: '/'
+  });
+}]);
+
 app.controller("MyController", function($scope){
   $scope.person = {
     name: "Ari Lerner"
@@ -33,4 +44,8 @@ app.controller("DemoController", function($scope){
     $scope.counter -= amount;
   };
 })
+
+app.controller('HomeController', function($scope){
+
+});
 

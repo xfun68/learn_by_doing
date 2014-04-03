@@ -10,15 +10,13 @@
 </head>
 <body>
   <div ng-controller="PlayerController">
-    <button ng-click="play()" class="button" ng-show="!player.playing">Play</button>
-    <button ng-click="stop()" class="button alert" ng-show="player.playing">Stop</button>
+    <button ng-click="player.stop()" class="button alert" ng-show="player.playing">Stop</button>
     <p>Playing audio: <b>{{ player.playing }}</b></p>
 
     <div>
       <ul id="programs_list">
         <li ng-repeat="program in programs">
-          <span npr-link play='play(program)' ng-model="program"></span>
-          <!-- <npr&#45;link ng&#45;model="program" player="player"></npr&#45;link> -->
+          <npr-link ng-model="program" player="player"></npr-link>
         </li>
       </ul>
     </div>

@@ -10,7 +10,7 @@ app.directive('nprLink', function() {
     replace: true,
     scope: {
       ngModel: '=',
-      play: '&'
+      player: '='
     },
     templateUrl: '/views/nprListItem.html',
     link: function(scope, ele, attr) {

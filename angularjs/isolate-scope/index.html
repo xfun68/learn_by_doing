@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+  <meta charset="utf-8">
+  <title>Isolate Scope</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
+  <script src="app.js"></script>
+</head>
+<body ng-controller="MainCtrl">
+  <p>{{cars.length}}</p>
+
+  <hr />
+
+  <section car-show cars="cars"></section>
+</body>
+</html>
+

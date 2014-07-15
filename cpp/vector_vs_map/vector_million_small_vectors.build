@@ -1,0 +1,4 @@
+#!/bin/sh
+
+g++ -O3 -o vector_million_small_vectors vector_million_small_vectors.cpp common.cpp common.h
+

@@ -1,0 +1,4 @@
+#!/bin/sh
+
+g++ -O3 -o vector_sort_after_all_push_back vector_sort_after_all_push_back.cpp common.cpp common.h
+

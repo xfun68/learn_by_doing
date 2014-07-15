@@ -1,0 +1,4 @@
+#!/bin/sh
+
+g++ -O3 -o vector_million_small_maps vector_million_small_maps.cpp common.cpp common.h
+

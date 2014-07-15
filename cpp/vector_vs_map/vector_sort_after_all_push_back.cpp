@@ -27,8 +27,6 @@ int main(int argc, char* args[])
     Timer timer;
     test(count);
   }
-
-  print_rss();
 }
 
 void test(size_t count)
@@ -43,5 +41,7 @@ void test(size_t count)
   sort(v.begin(), v.end(), less<int>());
 
   vector<int>(v).swap(v);
+
+  print_rss();
 }
 

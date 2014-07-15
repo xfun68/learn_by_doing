@@ -1,4 +1,0 @@
-#!/bin/sh
-
-./vector_sort_after_each_push_back "$*"
-

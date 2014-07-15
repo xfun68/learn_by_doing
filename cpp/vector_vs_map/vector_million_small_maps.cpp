@@ -1,6 +1,7 @@
 #include <iostream>
 #include <sstream>
 #include <vector>
+#include <map>
 #include <functional>
 #include <algorithm>
 
@@ -11,6 +12,7 @@
 using namespace std;
 
 typedef int DataType;
+typedef map<DataType, DataType> Container;
 
 void test(size_t vectors_count, size_t items_count);
 
@@ -32,20 +34,19 @@ int main(int argc, char* args[])
 
 void test(size_t vectors_count, size_t items_count)
 {
-  vector<vector<DataType> > v;
+  vector<Container> v;
   v.resize(vectors_count);
 
   for (size_t i = 0; i < vectors_count * items_count; i++) {
     size_t num = rand();
     size_t index = num % vectors_count;
-    vector<DataType>& iv = v[index];
-    iv.push_back(num);
-    sort(iv.begin(), iv.end(), less<int>());
+    Container& iv = v[index];
+    iv[num] = num;
   }
 
   for (size_t i = 0; i < vectors_count; i++) {
-    vector<DataType>& iv = v[i];
-    vector<int>(iv).swap(iv);
+    Container& iv = v[i];
+    Container(iv).swap(iv);
   }
 
   print_rss();

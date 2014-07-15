@@ -15,14 +15,17 @@ Timer::~Timer(void)
   clock_t end = clock();
   clock_t diff = end - _start;
 
-  cout << std::fixed << ((float)diff) / CLOCKS_PER_SEC << ",";
+  cout << std::fixed << ((float)diff) / CLOCKS_PER_SEC;
   cout.flush();
 }
 
 void print_rss(void)
 {
   stringstream command;
-  command << "top -pid " << getpid() << " -stats mem -l1 | tail -1 | tr -d 'K+-'";
+  command << "top -pid " << getpid() << " -stats mem -l1 | tail -1 | tr -d '+-' | tr -d '\n'";
   system(command.str().c_str());
+
+  cout << ",";
+  cout.flush();
 }
 

@@ -1,0 +1,4 @@
+#!/bin/sh
+
+for build in `ls *.build`; do ./$build; done
+

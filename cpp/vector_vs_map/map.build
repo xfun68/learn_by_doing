@@ -1,0 +1,4 @@
+#!/bin/sh
+
+g++ -O3 -o map map.cpp common.cpp common.h
+

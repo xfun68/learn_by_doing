@@ -3,5 +3,7 @@
 source_filename=${1:?ERROR: At least one cpp source file required.}
 case_name=$(basename ${source_filename%%.*})
 
-g++ -O3 -o $case_name $case_name.cpp common.cpp common.h
+g++ -O3 -o $case_name $case_name.cpp \
+  lib/src/common.cpp \
+  -I$PWD/lib/include
 

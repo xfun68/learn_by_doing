@@ -5,5 +5,5 @@ case_name=$(basename ${source_filename%%.*})
 
 shift
 
-eval "./$case_name $*"
+eval "./$case_name $* | tee $case_name.csv"
 

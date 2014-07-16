@@ -39,8 +39,13 @@ void test(size_t vectors_count, size_t items_count)
     size_t num = rand();
     size_t index = num % vectors_count;
     vector<DataType>& iv = v[index];
-    iv.push_back(num);
-    sort(iv.begin(), iv.end(), less<int>());
+
+    size_t value = num % items_count;
+    vector<DataType>::iterator iter = lower_bound(iv.begin(), iv.end(), value, less<int>());
+    if (iter == iv.end() || (*iter) != value) {
+      iv.push_back(value);
+      sort(iv.begin(), iv.end(), less<int>());
+    }
   }
 
   for (size_t i = 0; i < vectors_count; i++) {

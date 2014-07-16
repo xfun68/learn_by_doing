@@ -1,4 +1,6 @@
 #!/bin/sh
 
-for build in `ls *.build`; do ./$build; done
+for filename in `ls *.cpp`; do
+  ./build $filename
+done
 

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+source_filename=${1:?ERROR: At least one cpp source file required.}
+case_name=$(basename ${source_filename%%.*})
+
+shift
+
+eval "./$case_name $*"
+

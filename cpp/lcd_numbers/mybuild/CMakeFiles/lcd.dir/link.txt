@@ -1,0 +1,1 @@
+/usr/bin/c++    -std=c++11 -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/lcd.dir/lcd_numbers.cpp.o  -o lcd  /usr/local/lib/libboost_regex-mt.dylib -lgtest -lgtest_main 

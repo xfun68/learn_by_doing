@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 typedef std::vector<std::string> lcd_number_t;
 
@@ -43,15 +44,38 @@ class LCDNumber {
     std::vector<std::string> lines;
 };
 
-void print(const LCDNumber& lcd_number);
+class Display {
+  public:
+    void add(LCDNumber& lcd_number) {
+      lcd_numbers.push_back(lcd_number);
+    }
 
-void parse_parameters(int argc, char**& argv)
-{
-  if (argc != 2) {
-    std::cout << "Error: bad parameters!" << std::endl;
-    throw("Wrong arguments!");
-  }
-}
+    void print(){
+      size_t max_lines_count = 0;
+
+      for (size_t i = 0; i < lcd_numbers.size(); ++i) {
+        max_lines_count = std::max(max_lines_count, lcd_numbers[i].lines_count());
+      }
+
+      for (size_t ln = 0; ln < max_lines_count; ++ln) {
+        std::string line;
+
+        for (size_t i = 0; i < lcd_numbers.size(); ++i) {
+          LCDNumber& lcd_number = lcd_numbers[i];
+          line += lcd_numbers[i].line(ln);
+          line += " ";
+        }
+
+        std::cout << line << std::endl;
+      }
+    }
+
+  private:
+    std::vector<LCDNumber> lcd_numbers;
+};
+
+void print(const LCDNumber& lcd_number);
+void parse_parameters(int argc, char**& argv);
 
 int main(int argc, char* argv[]) {
   try {
@@ -59,9 +83,14 @@ int main(int argc, char* argv[]) {
 
     std::string numbers(argv[1]);
 
+    Display display;
+
     for (size_t i = 0; i < numbers.size(); ++i) {
-      print(LCDNumber(numbers.substr(i, 1)));
+      LCDNumber lcd_number(numbers.substr(i, 1));
+      display.add(lcd_number);
     }
+
+    display.print();
   } catch (std::string& error)
   {
     std::cout << error << std::endl;
@@ -75,6 +104,14 @@ int main(int argc, char* argv[]) {
 void print(const LCDNumber& lcd_number) {
   for (size_t i = 0; i < lcd_number.lines_count(); ++i) {
     std::cout << lcd_number.line(i) << std::endl;
+  }
+}
+
+void parse_parameters(int argc, char**& argv)
+{
+  if (argc != 2) {
+    std::cout << "Error: bad parameters!" << std::endl;
+    throw("Wrong arguments!");
   }
 }
 

@@ -1,35 +1,88 @@
-#include <iostream>
+#include <iostream>/*{{{*/
 #include <vector>
 #include <algorithm>
-#include <cstdlib>
+#include <cstdlib>/*}}}*/
 
-typedef std::vector<std::string> lcd_number_t;
+const std::string TEMPLATES[10][5] = {/*{{{*/
+  {
+    " - ",
+    "| |",
+    "   ",
+    "| |",
+    " - ",
+  },
+  {
+    "   ",
+    "  |",
+    "   ",
+    "  |",
+    "   ",
+  },
+  {
+    " - ",
+    "  |",
+    " - ",
+    "|  ",
+    " - ",
+  },
+  {
+    " - ",
+    "  |",
+    " - ",
+    "  |",
+    " - ",
+  },
+  {
+    "   ",
+    "| |",
+    " - ",
+    "  |",
+    "   ",
+  },
+  {
+    " - ",
+    "|  ",
+    " - ",
+    "  |",
+    " - ",
+  },
+  {
+    " - ",
+    "|  ",
+    " - ",
+    "| |",
+    " - ",
+  },
+  {
+    " - ",
+    "  |",
+    "   ",
+    "  |",
+    "   ",
+  },
+  {
+    " - ",
+    "| |",
+    " - ",
+    "| |",
+    " - ",
+  },
+  {
+    " - ",
+    "| |",
+    " - ",
+    "  |",
+    " - ",
+  },
+};/*}}}*/
 
 class LCDNumber {
   public:
     LCDNumber(const std::string& number, size_t size = 1) : size(size) {
-      if (number == "0") {
-        lines.push_back(" - "); lines.push_back("| |"); lines.push_back("   "); lines.push_back("| |"); lines.push_back(" - ");
-      } else if (number == "1") {
-        lines.push_back("   "); lines.push_back("  |"); lines.push_back("   "); lines.push_back("  |"); lines.push_back("   ");
-      } else if (number == "2") {
-        lines.push_back(" - "); lines.push_back("  |"); lines.push_back(" - "); lines.push_back("|  "); lines.push_back(" - ");
-      } else if (number == "3") {
-        lines.push_back(" - "); lines.push_back("  |"); lines.push_back(" - "); lines.push_back("  |"); lines.push_back(" - ");
-      } else if (number == "4") {
-        lines.push_back("   "); lines.push_back("| |"); lines.push_back(" - "); lines.push_back("  |"); lines.push_back("   ");
-      } else if (number == "5") {
-        lines.push_back(" - "); lines.push_back("|  "); lines.push_back(" - "); lines.push_back("  |"); lines.push_back(" - ");
-      } else if (number == "6") {
-        lines.push_back(" - "); lines.push_back("|  "); lines.push_back(" - "); lines.push_back("| |"); lines.push_back(" - ");
-      } else if (number == "7") {
-        lines.push_back(" - "); lines.push_back("  |"); lines.push_back("   "); lines.push_back("  |"); lines.push_back("   ");
-      } else if (number == "8") {
-        lines.push_back(" - "); lines.push_back("| |"); lines.push_back(" - "); lines.push_back("| |"); lines.push_back(" - ");
-      } else if (number == "9") {
-        lines.push_back(" - "); lines.push_back("| |"); lines.push_back(" - "); lines.push_back("  |"); lines.push_back(" - ");
-      } else {
-        lines.push_back(" - "); lines.push_back("|  "); lines.push_back(" - "); lines.push_back("|  "); lines.push_back(" - ");
+      int n = atoi(number.c_str());
+
+      for (size_t i = 0; i < 5; ++i) {
+        lines.push_back(TEMPLATES[n][i]);
       }
 
       scale();
@@ -142,12 +195,6 @@ int main(int argc, char* argv[]) {
   }
 
   return 0;
-}
-
-void print(const LCDNumber& lcd_number) {
-  for (size_t i = 0; i < lcd_number.lines_count(); ++i) {
-    std::cout << lcd_number.line(i) << std::endl;
-  }
 }
 
 void parse_parameters(int argc, char**& argv, size_t& size, std::vector<std::string>& numbers)

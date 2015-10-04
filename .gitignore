@@ -19,3 +19,8 @@ ajaxify_your_site/tmp/
 *.sqlite3
 .rake_tasks~
 *.class
+*.iml
+*.ipr
+*.iws
+.gradle
+.gradle/

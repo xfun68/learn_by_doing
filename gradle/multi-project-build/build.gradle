@@ -1,12 +1,4 @@
-project(':app') {
-  apply plugin: 'java'
-
-  repositories {
-    mavenCentral()
-  }
-}
-
-project(':core') {
+subprojects {
   apply plugin: 'java'
 
   repositories {

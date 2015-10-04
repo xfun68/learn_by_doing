@@ -24,3 +24,4 @@ ajaxify_your_site/tmp/
 *.iws
 .gradle
 .gradle/
+build/

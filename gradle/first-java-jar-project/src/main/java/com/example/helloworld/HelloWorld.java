@@ -1,6 +1,6 @@
 package com.example.helloworld;
 
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 
 public class HelloWorld {
     private static final Logger LOGGER = Logger.getLogger(String.valueOf(HelloWorld.class));

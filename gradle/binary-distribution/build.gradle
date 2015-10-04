@@ -13,3 +13,16 @@ dependencies {
 
 mainClassName = 'com.example.helloworld.HelloWorld'
 
+task copyLicense {
+  outputs.file new File("$buildDir/LICENSE")
+  doLast {
+    copy {
+      from "LICENSE"
+      into "$buildDir"
+    }
+  }
+}
+
+applicationDistribution.from(copyLicense) {
+  into ""
+}

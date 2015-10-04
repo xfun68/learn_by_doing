@@ -1,0 +1,16 @@
+plugins {
+  id 'application'
+  id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'log4j:log4j:1.2.17'
+    compile project(':core')
+}
+
+mainClassName = 'com.example.helloworld.HelloWorld'
+

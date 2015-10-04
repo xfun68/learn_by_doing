@@ -1,6 +1,9 @@
-apply plugin: 'application'
-apply plugin: 'idea'
-apply plugin: 'java'
+plugins {
+  id 'application'
+  id 'idea'
+  id 'java'
+//  id 'org.unbroken-dome.test-sets' version '1.1.0'
+}
 
 repositories {
   mavenCentral()

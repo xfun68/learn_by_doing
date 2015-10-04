@@ -1,0 +1,20 @@
+allprojects {
+  apply plugin: 'idea'
+
+  task allTask << {
+    println project.name
+  }
+}
+
+subprojects {
+  task subTask << {
+    println project.name
+  }
+}
+
+project(':sub-project1') {
+  task forProject1 << {
+    println 'for project 1'
+  }
+}
+

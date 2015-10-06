@@ -1,0 +1,76 @@
+defaultTasks 'hello'
+task hello {
+  doLast {
+    println 'Hello World!'
+  }
+}
+
+task task_shortcut << {
+  println 'Hello World!'
+}
+
+task upper << {
+  String someString = 'mY_nAmE'
+  println "Original: " + someString
+  println "Upper case: " + someString.toUpperCase()
+}
+
+task count << {
+  4.times {
+    print "$it "
+  }
+}
+
+task intro(dependsOn: 'hello') << {
+  println "I'm Gradle"
+}
+
+// The next line is illegal
+// intro.dependsOn hello2
+
+task hello2 << {
+  println 'hello2'
+}
+
+4.times { counter ->
+  task "dtask$counter" << {
+    println "I'm dynamic task number $counter"
+  }
+}
+
+4.times {
+  task "task$it" << {
+    println "I'm dynamic task number $it"
+  }
+}
+
+task0.dependsOn task1, task2, task3
+
+hello << {
+  println 'Hello Earth'
+}
+
+hello.doFirst {
+  println 'Hello Venus'
+}
+
+hello.doFirst {
+  println 'Hello Sun'
+}
+
+hello.doLast {
+  println 'Hello Jupiter'
+}
+
+hello.doLast {
+  println 'Hello Mars'
+}
+
+task myTask {
+  ext.myProperty = 'myValue'
+}
+
+task printTaskProperties << {
+  println myTask.myProperty
+}
+

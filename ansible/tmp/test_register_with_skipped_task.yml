@@ -1,0 +1,12 @@
+---
+
+- hosts: ubuntu-servers
+  tasks:
+    - name: copy file
+      copy: src=/tmp/xfwang dest=/tmp/
+      register: file_copied
+
+    - name: run if file copied
+      shell: date
+      when: file_copied | success
+

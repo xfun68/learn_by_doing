@@ -26,3 +26,4 @@ ajaxify_your_site/tmp/
 .gradle/
 build/
 .DS_Store
+.vagrant

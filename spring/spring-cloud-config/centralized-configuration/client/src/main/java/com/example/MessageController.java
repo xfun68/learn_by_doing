@@ -10,11 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MessageController {
 
-    @Value("${message:Hello default}")
+    @Value("${message:Hello in Application default}")
     private String message;
+
+    @Value("${name:Name in App default}")
+    private String name;
 
     @RequestMapping(value = "/message", method = RequestMethod.GET)
     public String getMessage() {
-        return message;
+        return String.format("{message: %s, name: %s}", this.message, this.name);
     }
 }
